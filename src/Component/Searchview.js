@@ -20,7 +20,6 @@ const MovieCard = ({movie}) =>{
 }
 
 const SearchView = ({ keyword, searchResults }) => {
-  
 
   const resultsHtml = searchResults.map((obj, i) => {
     return(
@@ -29,7 +28,18 @@ const SearchView = ({ keyword, searchResults }) => {
         </div>
     )
   })
-
+if(searchResults.length === 0){
+    return(
+        <>
+        <div className="container">
+            <div className="d-flex aligns-items-center justify-content-center">
+                <h1 className="text-danger">No Movie Found</h1>
+            </div>
+        </div>
+        </>
+    )
+}
+else{
   return (
     <>
       
@@ -43,6 +53,8 @@ const SearchView = ({ keyword, searchResults }) => {
       }  
     </>
   );
+    }
+  
 };
 
 export default SearchView;
