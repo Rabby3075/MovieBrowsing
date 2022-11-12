@@ -37,7 +37,7 @@ const MoviewView = () =>{
             )  
         }
         if(movieDetails){
-            
+            let year = movieDetails.release_date.substr(0,4);
             return(
             <>
             <Hero text={movieDetails.original_title} backdrop={backdropUrl} /> 
@@ -47,8 +47,16 @@ const MoviewView = () =>{
                         <img src={posterUrl} className="img-fluid shadow rounded" alt={movieDetails.original_title}/>
                     </div>
                     <div className="col-md-9">
-                        <h1 className="text-primary">{movieDetails.original_title}</h1>
-                        <h5 className="text-dark">{movieDetails.title}</h5>
+                        <h1 className="text-primary">{movieDetails.original_title} ({year})</h1>
+                        <h5 className="text-dark">
+                            {
+                            movieDetails.genres.map((obj, i) => {
+                                return(
+                                    <span key={i}>{obj.name}||</span>
+                                )
+                              })
+                            }
+                            </h5>
                         <p className="text-muted mt-2">{movieDetails.overview}</p>
                     </div>
                 </div>

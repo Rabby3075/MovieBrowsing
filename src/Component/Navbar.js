@@ -3,13 +3,27 @@ const Navbar = ({searchText,SetSearchText}) => {
   const navigate = useNavigate();
 
   const updateSearchText = (e) =>{
+    if(e.target.value !== ''){
     navigate('/search')
     SetSearchText(e.target.value)
+    }
+    else{
+      navigate('/')
+      SetSearchText(e.target.value)
+    }
   }
+
   const search = (e) =>{
+    if(document.getElementById('search').value !== ''){
     navigate('/search')
     SetSearchText(document.getElementById('search').value)
+    }
+    else{
+      navigate('/')
+      SetSearchText(document.getElementById('search').value)
+    }
   }
+
   return (
     <>
       <nav className="navbar navbar-expand-sm navbar-light bg-light">
